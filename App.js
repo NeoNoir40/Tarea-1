@@ -1,11 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { StyleSheet, Text, View,  TouchableOpacity } from "react-native";
 
 export default function App() {
-  console.log('Dano es gei')
+  const [click, setClick] = useState(false);
+
+  const onClick = () => {
+    setClick(true);
+    console.log(click);
+  };
+
+  const offClick = () => {
+    setClick(false);
+  };
+
   return (
     <View style={styles.container}>
-      <Text> </Text>
+      <Text style={styles.textwhite}>Tarea 1 React Native</Text>
+      {click ? (
+        <TouchableOpacity style={styles.buttonStyle} onPress={offClick}>
+          <Text style={styles.textwhite}>Hola Mundo</Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity style={styles.buttonStyle} onPress={onClick}>
+          <Text style={styles.textwhite}>Boton</Text>
+        </TouchableOpacity>
+      )}
       <StatusBar style="auto" />
     </View>
   );
@@ -14,8 +34,20 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#202223",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonStyle: {
+    marginTop: 20,
+    backgroundColor: "#0579EE",
+    borderRadius: 10,
+    padding: 10,
+  },
+  textwhite: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 50,
+    textAlign: "center",
   },
 });
